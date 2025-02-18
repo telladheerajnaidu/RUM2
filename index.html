@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- Preload the InitialLoadScript.js -->
-    <link rel="preload" href="https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js" as="script" onload="scriptLoaded()">
+    <link rel="preload" href="https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js" as="script" onload="loadInitialLoadScript()">
 
-    <!-- Add the script loader as per client's setup -->
     <script>
-        function scriptLoaded() {
-            // Ensure script is loaded immediately after preloading
-            console.log('InitialLoadScript.js has been preloaded');
+        // This function will run immediately after the preload is complete
+        function loadInitialLoadScript() {
+            const script = document.createElement('script');
+            script.src = "https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js";
+            script.type = "text/javascript";
+            script.id = "init-catchpoint";
+            document.head.appendChild(script);
         }
 
         (self.__next_s = self.__next_s || []).push([
