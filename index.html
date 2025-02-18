@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- Preload the InitialLoadScript.js -->
-    <link rel="preload" href="https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js" as="script">
+    <link rel="preload" href="https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js" as="script" onload="scriptLoaded()">
 
     <!-- Add the script loader as per client's setup -->
     <script>
+        function scriptLoaded() {
+            // Ensure script is loaded immediately after preloading
+            console.log('InitialLoadScript.js has been preloaded');
+        }
+
         (self.__next_s = self.__next_s || []).push([
             "https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js",
             { type: "text/javascript", id: "init-catchpoint" }
@@ -39,8 +44,6 @@
             </form>
         </div>
     </div>
-
-
 
     <!-- Simple form validation -->
     <script>
