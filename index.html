@@ -6,7 +6,16 @@
     <title>Sign In</title>
     <link rel="stylesheet" href="style.css">
 
-    <script defer src='https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js'></script>
+    <!-- Preload the InitialLoadScript.js -->
+    <link rel="preload" href="https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js" as="script">
+
+    <!-- Add the script loader as per client's setup -->
+    <script>
+        (self.__next_s = self.__next_s || []).push([
+            "https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js",
+            { type: "text/javascript", id: "init-catchpoint" }
+        ]);
+    </script>
 </head>
 <body>
     <div class="login-container">
@@ -30,6 +39,11 @@
             </form>
         </div>
     </div>
+
+    <!-- Load the script as per client's method -->
+    <script defer src="https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js"></script>
+
+    <!-- Simple form validation -->
     <script>
         // Hardcoded correct username and password
         const correctUsername = "123";
@@ -37,8 +51,8 @@
 
         // Function to validate the form on submit
         function validateForm() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
             // Check if both fields are filled
             if (username === "" || password === "") {
@@ -49,7 +63,7 @@
             // Check if username and password are correct
             if (username === correctUsername && password === correctPassword) {
                 alert("Login Successful!");
-                return true; // Here, you could redirect to another page if needed
+                return true;
             } else {
                 alert("Invalid username or password");
                 return false;
@@ -58,4 +72,3 @@
     </script>
 </body>
 </html>
-
