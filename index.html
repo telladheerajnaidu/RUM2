@@ -7,22 +7,53 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- Preload the InitialLoadScript.js -->
-    <link rel="preload" href="https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js" as="script" onload="loadInitialLoadScript()">
+    <link rel="preload" href="https://g.3gl.net/jp/12603/latest/InitialLoadScript.js" as="script" onload="loadInitialLoadScript()">
 
     <script>
-        // This function will run immediately after the preload is complete
+        // Debugging logs to track script execution
+        console.log("Page loading...");
+
         function loadInitialLoadScript() {
+            console.log("Preloaded script detected. Now appending script to DOM...");
+
             const script = document.createElement('script');
-            script.src = "https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js";
+            script.src = "https://g.3gl.net/jp/12603/latest/InitialLoadScript.js";
             script.type = "text/javascript";
             script.id = "init-catchpoint";
+            
+            script.onload = () => console.log("InitialLoadScript.js loaded successfully.");
+            script.onerror = () => console.error("Failed to load InitialLoadScript.js!");
+
             document.head.appendChild(script);
         }
 
+        // Debugging object push
+        console.log("Pushing script object to self.__next_s...");
         (self.__next_s = self.__next_s || []).push([
             "https://g.3gl.net/jp/11569/v4.0.7/InitialLoadScript.js",
             { type: "text/javascript", id: "init-catchpoint" }
         ]);
+
+        // Check after page loads
+        window.onload = function() {
+            console.log("Window fully loaded.");
+            
+            // Check if the script has been properly loaded
+            const scriptElement = document.getElementById("init-catchpoint");
+            if (scriptElement) {
+                console.log("Script tag exists in DOM.");
+            } else {
+                console.error("Script tag not found in DOM.");
+            }
+
+            // Check if 'n' object exists to prevent TypeError
+            console.log("Checking 'n' object:", window.n);
+            if (typeof window.n === "undefined") {
+                console.error("Error: 'n' is undefined! This could cause TypeError.");
+            } else {
+                console.log("'n' object exists:", window.n);
+            }
+        };
     </script>
 </head>
 <body>
@@ -50,22 +81,18 @@
 
     <!-- Simple form validation -->
     <script>
-        // Hardcoded correct username and password
         const correctUsername = "123";
         const correctPassword = "123";
 
-        // Function to validate the form on submit
         function validateForm() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Check if both fields are filled
             if (username === "" || password === "") {
                 alert("Please fill out both fields");
                 return false;
             }
 
-            // Check if username and password are correct
             if (username === correctUsername && password === correctPassword) {
                 alert("Login Successful!");
                 return true;
