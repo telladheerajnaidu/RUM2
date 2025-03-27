@@ -6,10 +6,11 @@
     <title>Sign In</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Preload the InitialLoadScript.js -->
-    <link rel="preload" href="<script defer src='https://g.3gl.net/jp/12603/v4.0.7/InitialLoadScript.js'></script>" as="script" onload="loadInitialLoadScript()">
+        <!-- Corrected Preload -->
+    <link rel="preload" href="https://g.3gl.net/jp/12603/v4.0.7/InitialLoadScript.js" as="script">
+        <!-- Load the script after preload -->
+    <script defer src="https://g.3gl.net/jp/12603/v4.0.7/InitialLoadScript.js"></script>
 
-    <script>
         // Debugging logs to track script execution
         console.log("Page loading...");
 
